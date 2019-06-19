@@ -1,0 +1,9 @@
+docker-compose.yml
+
+# web directory
+/www
+
+# ssh files and directories
+/keys
+authorized_keys
+
