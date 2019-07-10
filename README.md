@@ -48,7 +48,10 @@ Edit the authorized_keys file and put in the public keys
 of all the machines you want to connect to.
 
 
-Connect  Put all your html files into the `www` directory.
+Connect & Synchronize via SSH
+-----------------------------
+
+Put all files into the `www` directory.
 
 ```
 # connect with ssh to the server on port 2222
