@@ -12,7 +12,7 @@ services:
       - ./www:/usr/local/apache2/htdocs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${ROUTERNAME}.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${ROUTERNAME}.rule=Host(${DOMAIN})"
       - "traefik.http.routers.${ROUTERNAME}.entrypoints=websecure"
       - "traefik.http.routers.${ROUTERNAME}.tls.certresolver=myresolver"
     networks:
