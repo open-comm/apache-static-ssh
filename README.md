@@ -1,8 +1,7 @@
-Static Apache Webserver Configuration
-=====================================
+# Static Apache Webserver Configuration
 
 Ready to use static apache2 web server docker-compose configuration 
-for a traefik web proxy. With a ssh server with rsync to remotely 
+for a traefik 2 web proxy. With a ssh server with rsync to remotely 
 connect to the service and upload the static html files.
 
 This configuration uses the official apache2 docker image:
@@ -15,8 +14,7 @@ This configuration uses the `panubo/sshd` docker image:
 * github repository of the image: https://github.com/panubo/docker-sshd
 
 
-Install
--------
+## Install
 
 ```
 # clone repository
@@ -25,48 +23,23 @@ git clone https://gitlab.wachter-jud.net/docker/apache-static-sshd.git
 # move into directory
 cd apache-static-sshd
 
-# create directories
-## create www directory where your static web page files go
-mkdir www
-## create folder for ssh keys
-mkdir keys
+# copy and edit the sample environment file
+cp sample.env .env
 
-# copy and edit the sample configuration file
-cp docker-compose.yml.sample docker-compose.yml
+## open the .env file in a text editor and configure all
+## values to your needs: DOMAIN, ROUTERNAME, SSH_PORT
 
 # copy the sample authorized_keys file and put in the public keys
 # of the machines that shall connect to it.
 cp authorized_keys.sample authorized_keys
-```
 
-Edit docker-compose.yml and change the following value:
-
-* `your.web.domain` the domain name under which this web server will be available
-
-
-Edit the authorized_keys file and put in the public keys 
-of all the machines you want to connect to.
-
-
-Connect & Synchronize via SSH
------------------------------
-
-Put all files into the `www` directory.
-
-```
-# connect with ssh to the server on port 2222
-ssh admin@your.domain -p 2222
-
-# copy the files in your local folder to the web server on port 2222
-scp -P 2222 -r * admin@your.domain:/home/admin
-
-# synchronize the files in your local folder to the web server on port 2222
-rsync -azhe "ssh -p 2222" ./ admin@your.domain:/home/admin
+## open the authorized_keys file and put in the public keys 
+## of the users that shall be able to connect to it.
+## A password is not needed, users are authorized by their public key.
 ```
 
 
-Usage
------
+## Usage
 
 ```
 # start docker containers
@@ -80,4 +53,18 @@ docker-compose pull
 ```
 
 
+## Connect & Synchronize via SSH
+
+Put all files into the `www` directory.
+
+```
+# connect with ssh to the server on port 2222
+ssh admin@your.domain -p 2222
+
+# copy the files in your local folder to the web server on port 2222
+scp -P 2222 -r * admin@your.domain:/home/admin
+
+# synchronize the files in your local folder to the web server on port 2222
+rsync -azhe "ssh -p 2222" ./ admin@your.domain:/home/admin
+```
 
