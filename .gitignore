@@ -4,3 +4,7 @@
 # web directory
 /www
 
+# SSH key directories
+/authorized_keys
+/keys
+
