@@ -28,15 +28,11 @@ cp sample.env .env
 
 ## open the .env file in a text editor and configure all
 ## values to your needs: DOMAIN, ROUTERNAME, SSH_PORT
-
-# copy the sample authorized_keys file and put in the public keys
-# of the machines that shall connect to it.
-cp authorized_keys.sample authorized_keys
-
-## open the authorized_keys file and put in the public keys 
-## of the users that shall be able to connect to it.
-## A password is not needed, users are authorized by their public key.
 ```
+
+Put all the public keys that you would like to be able to connect to it
+via SSH or SFTP to it into a new file in the authorized_keys folder.
+A password is then not needed, as users are authorized via their public key.
 
 
 ## Usage

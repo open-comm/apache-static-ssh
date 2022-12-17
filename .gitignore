@@ -4,7 +4,3 @@
 # web directory
 /www
 
-# ssh files and directories
-/keys
-authorized_keys
-
